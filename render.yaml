@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: leave-management-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: Jwt__Key
+        generateValue: true
+      - key: Jwt__Issuer
+        value: LeaveManagement.Api
+      - key: Jwt__Audience
+        value: LeaveManagement.Client
+      - key: Jwt__ExpiryMinutes
+        value: 60
